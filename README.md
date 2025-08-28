@@ -35,6 +35,4 @@ O design foi inspirado nas características visuais do filme, usando cores, form
 - Animações de entrada e saída para cada emoção
 - Responsividade para dispositivos móveis
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/catalogo-emocoes.git
+
