@@ -1,78 +1,450 @@
-
-.nav-bar{
-    display: flex;
-    flex-direction: row ;
-    justify-content: center;
-    align-items: center;
-    & .nav-imagem{
-        width: 170px;
-        height: 100px;
-        margin-right: 520px;
-    }
+/* ---------- Reset e Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-  nav{
-             display: flex;
-             flex-direction: row ;
-             cursor: pointer;
-             justify-content: right;
-            
-    }
-    input{
-        border: none;
-        background-color: rgb(170, 170, 170);
-        border-radius: 16px;
-        padding: 10px;
-    }
-    .personagens-conterner{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
 
-        & .felicidade{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: end;
-        padding: 5px;
-            & img{
-                z-index: 1;
-                padding: 20px;
-                margin: 10px;
-            }
-            &  .quadrado{
-            display: flex;
-            background-color: rgb(37, 122, 161);
-            width: 350px;
-            height: 350px;
-            border-radius: 16px;
-            position: absolute;
-            z-index: 0;
-            }
-        }
-          & .tisteza{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: end;
-            padding: 5px;
-            & img{
-                z-index: 1;
-                padding: 20px;
-                margin: 10px;
-                width: 395px;
-                height:295px;
-            }
-            &  .quadrado{
-            display: flex;
-            background-color: rgb(96, 140, 160);
-            width: 350px;
-            height: 450px;
-            border-radius: 16px;
-            position: absolute;
-            z-index: 0;
-            }
-        }
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-   
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Header Moderno ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+header .logo img {
+  height: 45px;
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover img {
+  transform: scale(1.05);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #3498db;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 70%;
+}
+
+/* ---------- Personagens Modernos ---------- */
+.personagens-container {
+  display: flex;
+  gap: 8px;
+  width: 95%;
+  max-width: 1400px;
+  margin: 40px auto;
+  height: 600px;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+.personagem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 500px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.personagem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.personagem:hover::before {
+  opacity: 1;
+}
+
+.alegria { background: linear-gradient(135deg, #f7d046 0%, #f9a825 100%); }
+.raiva { background: linear-gradient(135deg, #e94e3c 0%, #c62828 100%); }
+.nojinho { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); }
+.medo { background: linear-gradient(135deg, #7b5fa3 0%, #6a1b9a 100%); }
+.tristeza { background: linear-gradient(135deg, #4a90e2 0%, #1565c0 100%); }
+
+.personagem img {
+  width: 100%;
+  height: auto;
+  max-height: 95%;
+  object-fit: contain;
+  display: block;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  position: relative;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+.personagem:hover {
+  height: 550px;
+  flex: 1.2;
+  transform: translateY(-10px);
+}
+
+.personagem:hover img {
+  transform: translateY(-100px) scale(1.05);
+}
+
+/* ---------- Card Expandido Moderno ---------- */
+.expandido {
+  position: fixed;
+  top: 50%;
+  left: 120px;
+  transform: translate(0, -50%) scale(0.8);
+  width: 70%;
+  max-width: 800px;
+  height: 75vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  color: #2c3e50;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.507);
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.expandido.show {
+  transform: translate(20%, -50%) scale(1);
+  opacity: 1;
+}
+
+.expandido-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.expandido-texto {
+  flex: 1;
+}
+
+.expandido img {
+  width: auto;
+  height: 300px;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.expandido h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.expandido p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #5a6c7d;
+  background-color: wheat;
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.fechar {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2.5rem;
+  color: #7f8c8d;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.fechar:hover {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  transform: rotate(90deg);
+}
+
+/* ---------- Seções Modernas ---------- */
+section {
+  padding: 60px 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #3498db, #2ecc71);
+}
+
+.sobre-filme {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.sobre-filme h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.sobre-filme p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: #5a6c7d;
+}
+
+.curiosidades {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.curiosidades h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.curiosidades ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.curiosidades li {
+  background: rgba(52, 152, 219, 0.05);
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #3498db;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curiosidades li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.curiosidades li strong {
+  color: #e94e3c;
+  font-weight: 600;
+}
+
+/* ---------- Redes Sociais Modernas ---------- */
+#redes {
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 60px 40px;
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+}
+
+#redes h2 {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+#redes p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ---------- Footer Moderno ---------- */
+footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+/* ---------- Responsivo Moderno ---------- */
+@media (max-width: 1024px) {
+  .personagens-container {
+    height: 500px;
+  }
+  
+  .personagem {
+    height: 450px;
+  }
+  
+  .personagem:hover {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav {
+    gap: 15px;
+  }
+  
+  .personagens-container {
+    flex-direction: column;
+    height: auto;
+    gap: 15px;
+  }
+
+  .personagem {
+    height: 150px;
+    min-height: 150px;
+  }
+
+  .personagem:hover {
+    height: 180px;
+    flex: 1;
+  }
+  
+  .personagem:hover img {
+    transform: translateY(-30px) scale(1.05);
+  }
+
+  .expandido {
+    width: 90%;
+    height: 70vh;
+    left: 5%;
+    transform: translateY(-50%) scale(0.9);
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .expandido.show {
+    transform: translateY(-50%) scale(1);
+  }
+
+  .expandido-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .expandido img {
+    width: 120px;
+    height: 120px;
+  }
+
+  section {
+    padding: 40px 20px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  nav a {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  
+  .expandido {
+    padding: 20px 15px;
+  }
+  
+  .expandido h2 {
+    font-size: 2rem;
+  }
+}
