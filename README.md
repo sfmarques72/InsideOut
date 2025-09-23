@@ -33,6 +33,6 @@ O design foi inspirado nas características visuais do filme, usando cores, form
 
 - Exibição de emoções com nome e descrição
 - Animações de entrada e saída para cada emoção
-- Responsividade para dispositivos móveis
+
 
 
