@@ -17,6 +17,68 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- Header Moderno ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+header .logo img {
+  height: 45px;
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover img {
+  transform: scale(1.05);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #3498db;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 70%;
+}
+
 /* ---------- Seção Início com Riley ---------- */
 .inicio {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -214,241 +276,6 @@ html {
   line-height: 1.6;
 }
 
-/* ---------- Preview das Emoções ---------- */
-.emotions-preview {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.emotion-preview {
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.emotion-preview::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.emotion-preview:hover::before {
-  left: 100%;
-}
-
-.emotion-preview:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.alegria-preview {
-  background: linear-gradient(45deg, #f7d046, #f9a825);
-  color: #333;
-}
-
-.tristeza-preview {
-  background: linear-gradient(45deg, #4a90e2, #1565c0);
-  color: white;
-}
-
-.raiva-preview {
-  background: linear-gradient(45deg, #e94e3c, #c62828);
-  color: white;
-}
-
-.nojinho-preview {
-  background: linear-gradient(45deg, #2ecc71, #27ae60);
-  color: white;
-}
-
-.medo-preview {
-  background: linear-gradient(45deg, #7b5fa3, #6a1b9a);
-  color: white;
-}
-
-/* ---------- Botão CTA ---------- */
-.cta-button {
-  background: linear-gradient(45deg, #ff6b6b, #ffa502);
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.cta-button:hover::before {
-  left: 100%;
-}
-
-.cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-  background: linear-gradient(45deg, #ffa502, #ff6b6b);
-}
-
-/* ---------- Responsivo ---------- */
-@media (max-width: 1024px) {
-  .inicio-container {
-    gap: 60px;
-  }
-  
-  .riley-character {
-    width: 250px;
-    height: 350px;
-  }
-  
-  .riley-image {
-    width: 200px;
-    height: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .inicio-container {
-    flex-direction: column;
-    gap: 40px;
-    text-align: center;
-  }
-  
-  .inicio-content {
-    text-align: center;
-  }
-  
-  .inicio-content h1 {
-    font-size: 3rem;
-  }
-  
-  .riley-character {
-    width: 200px;
-    height: 280px;
-  }
-  
-  .riley-image {
-    width: 180px;
-    height: 240px;
-  }
-  
-  .emotions-preview {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .inicio {
-    padding: 60px 15px;
-  }
-  
-  .inicio-content h1 {
-    font-size: 2.5rem;
-  }
-  
-  .subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .emotion-preview {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
-  
-  .cta-button {
-    padding: 12px 30px;
-    font-size: 1rem;
-  }
-}
-/* ---------- Header Moderno ---------- */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 40px;
-  background: #fff;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-}
-
-header .logo img {
-  height: 45px;
-  transition: transform 0.3s ease;
-}
-
-header .logo:hover img {
-  transform: scale(1.05);
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  padding: 8px 16px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-nav a:hover {
-  color: #3498db;
-  background: rgba(52, 152, 219, 0.1);
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: #3498db;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-nav a:hover::after {
-  width: 70%;
-}
-
 /* ---------- Personagens Modernos ---------- */
 .personagens-container {
   display: flex;
@@ -638,10 +465,6 @@ section::before {
   background: linear-gradient(to bottom, #3498db, #2ecc71);
 }
 
-.sobre-filme {
-  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-}
-
 .sobre-filme h2 {
   color: #2c3e50;
   margin-bottom: 30px;
@@ -655,10 +478,6 @@ section::before {
   margin-bottom: 20px;
   font-size: 1.05rem;
   color: #5a6c7d;
-}
-
-.curiosidades {
-  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
 }
 
 .curiosidades h2 {
@@ -723,8 +542,22 @@ footer {
   margin-top: 60px;
 }
 
-/* ---------- Responsivo Moderno ---------- */
+/* ---------- Responsivo ---------- */
 @media (max-width: 1024px) {
+  .inicio-container {
+    gap: 60px;
+  }
+  
+  .riley-character {
+    width: 250px;
+    height: 350px;
+  }
+  
+  .riley-image {
+    width: 200px;
+    height: 300px;
+  }
+  
   .personagens-container {
     height: 500px;
   }
@@ -747,6 +580,30 @@ footer {
   
   nav {
     gap: 15px;
+  }
+  
+  .inicio-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .inicio-content {
+    text-align: center;
+  }
+  
+  .inicio-content h1 {
+    font-size: 3rem;
+  }
+  
+  .riley-character {
+    width: 200px;
+    height: 280px;
+  }
+  
+  .riley-image {
+    width: 180px;
+    height: 240px;
   }
   
   .personagens-container {
@@ -800,6 +657,18 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .inicio {
+    padding: 60px 15px;
+  }
+  
+  .inicio-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
   nav {
     flex-direction: column;
     gap: 10px;
