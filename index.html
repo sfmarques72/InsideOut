@@ -11,7 +11,7 @@
     }
   </style>
 </head>
-<body id="inicio">
+<body>
 
 <header>
   <div class="logo">
@@ -20,10 +20,44 @@
   <nav>
     <a href="#inicio">Início</a>
     <a href="#personagens">Personagens</a>
-    <a href="#sobre">Emoções</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#curiosidades">Curiosidades</a>
     <a href="#redes">Rede Sociais</a>
   </nav>
 </header>
+
+<!-- Seção Início com Riley e Luzes das Emoções -->
+<section class="inicio" id="inicio">
+  <div class="lights-container">
+    <!-- Luzes das emoções sobrevoando -->
+    <div class="light alegria-light" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="light tristeza-light" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="light raiva-light" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="light nojinho-light" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="light medo-light" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="light alegria-light" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="light tristeza-light" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="light raiva-light" style="left: 80%; animation-delay: 7s;"></div>
+    <div class="light nojinho-light" style="left: 90%; animation-delay: 8s;"></div>
+  </div>
+  
+  <div class="inicio-container">
+    <div class="riley-container">
+      <div class="riley-character">
+        <div class="riley-image">
+          <img src="img/riley.png" alt="Riley" onerror="this.style.display='none'">
+        </div>
+        <div class="emotion-glow"></div>
+      </div>
+    </div>
+    
+    <div class="inicio-content">
+      <h1>Divertida Mente</h1>
+      <p class="subtitle">Descubra o mundo emocionante dentro da mente da Riley</p>
+      <p class="description">Cada emoção tem seu papel importante na jornada da vida. Conheça Alegria, Tristeza, Raiva, Nojinho e Medo!</p>   
+    </div>
+  </div>
+</section>
 
 <!-- Personagens -->
 <!-- Personagens -->
@@ -79,7 +113,7 @@
 </section>
 
 <!-- Curiosidades -->
-<section class="curiosidades">
+<section class="curiosidades"  id="curiosidades">
   <h2>Curiosidades sobre Divertida Mente</h2>
   <ul>
     <li><strong>Inspiração científica:</strong> Os produtores consultaram psicólogos e neurocientistas para representar com precisão como as emoções e memórias funcionam.</li>

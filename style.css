@@ -17,6 +17,376 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- Seção Início com Riley ---------- */
+.inicio {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------- Luzes Flutuantes das Emoções ---------- */
+.lights-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.light {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.3;
+  animation: floatUp 8s infinite linear;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Cores das luzes baseadas nas emoções */
+.alegria-light {
+  background: radial-gradient(circle, #f7d046 0%, #ffeb3b 100%);
+  box-shadow: 0 0 50px #f7d046;
+}
+
+.tristeza-light {
+  background: radial-gradient(circle, #4a90e2 0%, #2196f3 100%);
+  box-shadow: 0 0 50px #4a90e2;
+}
+
+.raiva-light {
+  background: radial-gradient(circle, #e94e3c 0%, #f44336 100%);
+  box-shadow: 0 0 50px #e94e3c;
+}
+
+.nojinho-light {
+  background: radial-gradient(circle, #2ecc71 0%, #4caf50 100%);
+  box-shadow: 0 0 50px #2ecc71;
+}
+
+.medo-light {
+  background: radial-gradient(circle, #7b5fa3 0%, #9c27b0 100%);
+  box-shadow: 0 0 50px #7b5fa3;
+}
+
+/* ---------- Container Principal ---------- */
+.inicio-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Riley Character ---------- */
+.riley-container {
+  position: relative;
+}
+
+.riley-character {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.riley-image {
+  width: 250px;
+  height: 350px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  border: 4px solid rgba(255,255,255,0.1);
+}
+
+.riley-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.riley-image::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.emotion-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #f7d046, #4a90e2, #e94e3c, #2ecc71, #7b5fa3, #f7d046);
+  filter: blur(40px);
+  opacity: 0.3;
+  animation: rotateGlow 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes rotateGlow {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ---------- Conteúdo da Seção Início ---------- */
+.inicio-content {
+  text-align: left;
+  color: white;
+  max-width: 500px;
+}
+
+.inicio-content h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #ffd700, #ff6b6b, #4a90e2, #2ecc71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* ---------- Preview das Emoções ---------- */
+.emotions-preview {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.emotion-preview {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.emotion-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.emotion-preview:hover::before {
+  left: 100%;
+}
+
+.emotion-preview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.alegria-preview {
+  background: linear-gradient(45deg, #f7d046, #f9a825);
+  color: #333;
+}
+
+.tristeza-preview {
+  background: linear-gradient(45deg, #4a90e2, #1565c0);
+  color: white;
+}
+
+.raiva-preview {
+  background: linear-gradient(45deg, #e94e3c, #c62828);
+  color: white;
+}
+
+.nojinho-preview {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.medo-preview {
+  background: linear-gradient(45deg, #7b5fa3, #6a1b9a);
+  color: white;
+}
+
+/* ---------- Botão CTA ---------- */
+.cta-button {
+  background: linear-gradient(45deg, #ff6b6b, #ffa502);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(45deg, #ffa502, #ff6b6b);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1024px) {
+  .inicio-container {
+    gap: 60px;
+  }
+  
+  .riley-character {
+    width: 250px;
+    height: 350px;
+  }
+  
+  .riley-image {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inicio-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .inicio-content {
+    text-align: center;
+  }
+  
+  .inicio-content h1 {
+    font-size: 3rem;
+  }
+  
+  .riley-character {
+    width: 200px;
+    height: 280px;
+  }
+  
+  .riley-image {
+    width: 180px;
+    height: 240px;
+  }
+  
+  .emotions-preview {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .inicio {
+    padding: 60px 15px;
+  }
+  
+  .inicio-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .emotion-preview {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
 /* ---------- Header Moderno ---------- */
 header {
   display: flex;
@@ -126,7 +496,7 @@ nav a:hover::after {
 .alegria { background: linear-gradient(135deg, #f7d046 0%, #f9a825 100%); }
 .raiva { background: linear-gradient(135deg, #e94e3c 0%, #c62828 100%); }
 .nojinho { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); }
-.medo { background: linear-gradient(135deg, #7b5fa3 0%, #6a1b9a 100%); }
+.medo { background: linear-gradient(135deg, #827594 0%, #7a4c97 100%); }
 .tristeza { background: linear-gradient(135deg, #4a90e2 0%, #1565c0 100%); }
 
 .personagem img {

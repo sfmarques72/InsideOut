@@ -45,3 +45,4 @@ function fecharExpandido() {
     p.style.display = 'flex';
   });
 }
+
