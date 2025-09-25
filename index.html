@@ -26,6 +26,7 @@
   </nav>
 </header>
 
+<main>
 <!-- Seção Início com Riley e Luzes das Emoções -->
 <section class="inicio" id="inicio">
   <div class="lights-container">
@@ -123,17 +124,18 @@
     <li><strong>Sequência:</strong> Uma sequência, Divertida Mente 2, está em desenvolvimento e será lançada em 2024.</li>
   </ul>
 </section>
+</main>
 
-<!-- Card Expandido -->
-<div class="expandido" id="expandido">
-  <span class="fechar" id="fechar">&times;</span>
-<div class="expandido-content">
-  <div class="expandido-texto">
-    <h2 id="expandido-name"></h2>
-    <p id="expandido-description"></p>
+<!-- Card Expandido (dialog acessível) -->
+<div class="expandido" id="expandido" role="dialog" aria-modal="true" aria-labelledby="expandido-name" aria-describedby="expandido-description" hidden>
+  <button class="fechar" id="fechar" type="button" aria-label="Fechar painel">&times;</button>
+  <div class="expandido-content">
+    <div class="expandido-texto">
+      <h2 id="expandido-name"></h2>
+      <p id="expandido-description"></p>
+    </div>
+    <img src="" id="expandido-img" alt="Personagem">
   </div>
-  <img src="" id="expandido-img" alt="Personagem">
-</div>
 
 </div>
 

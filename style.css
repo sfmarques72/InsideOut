@@ -17,6 +17,12 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20%;
+}
+
 /* ---------- Header Moderno ---------- */
 header {
   display: flex;
@@ -82,11 +88,10 @@ nav a:hover::after {
 /* ---------- Seção Início com Riley ---------- */
 .inicio {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
   position: relative;
   overflow: hidden;
 }
@@ -246,6 +251,7 @@ nav a:hover::after {
 }
 
 .inicio-content h1 {
+  line-height: 80px;
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 20px;
@@ -280,9 +286,6 @@ nav a:hover::after {
 .personagens-container {
   display: flex;
   gap: 8px;
-  width: 95%;
-  max-width: 1400px;
-  margin: 40px auto;
   height: 600px;
   align-items: center;
   justify-content: center;
@@ -301,6 +304,58 @@ nav a:hover::after {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   height: 500px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Placeholder used to preserve layout while the personagem is fixed */
+.personagem-placeholder {
+  display: inline-block;
+}
+
+/* Estado hero: quando o personagem é movido e expandido para área do destaque */
+.personagem.hero {
+  border-radius: 20px;
+  overflow: visible;
+  /* fundo opaco e legível similar ao dialog original */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  color: #2c3e50;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.507);
+  display: block !important;
+  padding-top: 30px; /* empurra conteúdo para baixo, evitando sobreposição com o close */
+}
+
+.personagem.hero img {
+  width: auto;
+  height: 60%;
+  object-fit: contain;
+  transform: none !important;
+}
+
+.hero-info {
+  position: absolute;
+  right: 40px;
+  top: 70px; /* empurrado para baixo para não ficar sob o botão fechar */
+  max-width: 45%;
+  z-index: 2010;
+  /* caixa clara para melhorar contraste com o fundo do personagem */
+  background: rgba(255,255,255,0.95);
+  color: #2c3e50;
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.hero-info h2 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.hero-info p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #425466;
 }
 
 .personagem::before {
@@ -356,7 +411,7 @@ nav a:hover::after {
   transform: translate(0, -50%) scale(0.8);
   width: 70%;
   max-width: 800px;
-  height: 75vh;
+  height: 65vh;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -364,7 +419,9 @@ nav a:hover::after {
   align-items: center;
   padding: 40px;
   gap: 40px;
-  z-index: 1000;
+  /* start non-interactive and behind content so it doesn't block hovers */
+  z-index: -1;
+  pointer-events: none;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   color: #2c3e50;
@@ -378,6 +435,15 @@ nav a:hover::after {
 .expandido.show {
   transform: translate(20%, -50%) scale(1);
   opacity: 1;
+  /* enable interactions and bring to front only when visible */
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+/* ensure the hidden attribute actually hides the dialog (author styles may override UA default) */
+.expandido[hidden] {
+  display: none;
+  pointer-events: none;
 }
 
 .expandido-content {
@@ -411,7 +477,7 @@ nav a:hover::after {
 }
 
 .expandido p {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   line-height: 1.8;
   color: #5a6c7d;
   background-color: wheat;
@@ -446,7 +512,7 @@ nav a:hover::after {
 /* ---------- Seções Modernas ---------- */
 section {
   padding: 60px 40px;
-  margin: 40px auto;
+  margin: 40px 0;
   max-width: 1200px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -465,6 +531,17 @@ section::before {
   background: linear-gradient(to bottom, #3498db, #2ecc71);
 }
 
+.sobre-filme, .curiosidades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sobre-filme p, .curiosidades ul {
+  max-width: 90ch;
+  text-align: justify;
+}
+
 .sobre-filme h2 {
   color: #2c3e50;
   margin-bottom: 30px;
@@ -478,6 +555,7 @@ section::before {
   margin-bottom: 20px;
   font-size: 1.05rem;
   color: #5a6c7d;
+  text-align: justify;
 }
 
 .curiosidades h2 {
@@ -491,11 +569,12 @@ section::before {
 .curiosidades ul {
   list-style-type: none;
   padding-left: 0;
+  max-width: 100ch;
 }
 
 .curiosidades li {
   background: rgba(52, 152, 219, 0.05);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   padding: 20px;
   border-radius: 12px;
   border-left: 4px solid #3498db;
@@ -508,18 +587,27 @@ section::before {
 }
 
 .curiosidades li strong {
-  color: #e94e3c;
-  font-weight: 600;
+  color: #b33628;
+  font-weight: 800;
 }
 
 /* ---------- Redes Sociais Modernas ---------- */
 #redes {
+  max-width: none;
+  width: 100%;
   background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
   color: #fff;
   text-align: center;
   border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   padding: 60px 40px;
   box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+  margin: 0;
+}
+
+#redes::before {
+  display: none;
 }
 
 #redes h2 {
