@@ -8,6 +8,17 @@ Este é um projeto desenvolvido para a disciplina de [Web Front-end avançado] n
 
 Criar um catálogo interativo de emoções humanas utilizando HTML, CSS e JavaScript, tendo como inspiração os sentimentos retratados no filme *Divertida Mente* da Disney/Pixar.
 
+## ⚙️ Requisitos e instruções para rodar o projeto
+
+Antes de executar o projeto, verifique se você tem um navegador moderno (Chrome, Edge, Firefox ou Safari) atualizado. O projeto é estático (HTML/CSS/JS), então não há dependências de build.
+
+Requisitos mínimos
+- Navegador moderno (Chrome/Edge/Firefox/Safari)
+
+Como abrir localmente (método mais simples)
+1. Abra a pasta do projeto no seu gerenciador de arquivos.
+2. Dê um duplo-clique em `index.html` para abrir no navegador.
+
 ## 🧩 Tecnologias Utilizadas
 
 - HTML5
