@@ -17,6 +17,12 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20%;
+}
+
 /* ---------- Header Moderno ---------- */
 header {
   display: flex;
@@ -82,11 +88,10 @@ nav a:hover::after {
 /* ---------- Seção Início com Riley ---------- */
 .inicio {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
   position: relative;
   overflow: hidden;
 }
@@ -246,6 +251,7 @@ nav a:hover::after {
 }
 
 .inicio-content h1 {
+  line-height: 80px;
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 20px;
@@ -280,9 +286,6 @@ nav a:hover::after {
 .personagens-container {
   display: flex;
   gap: 8px;
-  width: 95%;
-  max-width: 1400px;
-  margin: 40px auto;
   height: 600px;
   align-items: center;
   justify-content: center;
@@ -364,7 +367,9 @@ nav a:hover::after {
   align-items: center;
   padding: 40px;
   gap: 40px;
-  z-index: 1000;
+  /* start non-interactive and behind content so it doesn't block hovers */
+  z-index: -1;
+  pointer-events: none;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   color: #2c3e50;
@@ -378,6 +383,15 @@ nav a:hover::after {
 .expandido.show {
   transform: translate(20%, -50%) scale(1);
   opacity: 1;
+  /* enable interactions and bring to front only when visible */
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+/* ensure the hidden attribute actually hides the dialog (author styles may override UA default) */
+.expandido[hidden] {
+  display: none;
+  pointer-events: none;
 }
 
 .expandido-content {
@@ -446,7 +460,7 @@ nav a:hover::after {
 /* ---------- Seções Modernas ---------- */
 section {
   padding: 60px 40px;
-  margin: 40px auto;
+  margin: 40px 0;
   max-width: 1200px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -514,12 +528,21 @@ section::before {
 
 /* ---------- Redes Sociais Modernas ---------- */
 #redes {
+  max-width: none;
+  width: 100%;
   background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
   color: #fff;
   text-align: center;
   border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   padding: 60px 40px;
   box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+  margin: 0;
+}
+
+#redes::before {
+  display: none;
 }
 
 #redes h2 {
